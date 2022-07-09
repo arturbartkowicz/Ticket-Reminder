@@ -1,0 +1,45 @@
+<div class="d-flex flex-column align-items-center justify-content-center mt-4">
+  <h1 class="mb-3">Create a user:</h1>
+  <%= form_with model: @user, url: user_path do |form| %>
+
+    <% if @user.errors.any? %>
+      <div class="alert alert-danger">
+        <% @user.errors.full_messages.each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="mb-3">
+      <%= form.label "Name:" %>
+      <%= form.text_field :first_name, class: "form-control", placeholder: 'Name' %>
+    </div>
+    <div class="mb-3">
+      <%= form.label "Surname:" %>
+      <%= form.text_field :last_name, class: "form-control", placeholder: 'Surname' %>
+    </div>
+    <div class="mb-3">
+      <%= form.label "Email address:" %>
+      <%= form.text_field :email, class: "form-control", placeholder: 'email@email.com' %>
+    </div>
+    <div class="mb-3">
+      <%= form.label "Set reminder:" %>
+      <%= form.select(:due_date_reminder, [["Yes", true], ["No", false]], {}, {class: "form-select"}) %>
+    </div>
+    <div class="mb-3">
+      <%= form.label "How many days back:" %>
+      <%= form.number_field :due_date_reminder_interval, class: "form-control", placeholder: 'Days' %>
+    </div>
+    <div class="mb-3">
+      <%= form.label "What time:" %>
+      <%= form.time_field :due_date_reminder_time, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label "Select timezone:" %>
+      <%= form.select(:time_zone, [["Berlin", "BE"], ["Chicago", "CHI"], ["Madrid", "MD"]], {}, {class: "form-select"}) %>
+    </div>
+    <div class="w-full d-flex justify-content-center">
+      <%= form.submit "Create user", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
