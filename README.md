@@ -1,24 +1,31 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Ruby on Rails app
 
-Things you may want to cover:
+Simple Ruby on Rails application able to send ticket reminders to the users.
 
-* Ruby version
+## Tech stack
 
-* System dependencies
+Ruby version:
 
-* Configuration
+```
+ruby -v    =>  2.7.6
+```
 
-* Database creation
+Ruby on Rails version:
 
-* Database initialization
+```
+rails -v   => 6.0.5
+```
 
-* How to run the test suite
+Database:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+sqlite3
+```
 
-* Deployment instructions
+## Running this app
 
-* ...
+## Using the app
+
+## Running tests
