@@ -1,6 +1,15 @@
 <div class="d-flex flex-column align-items-center justify-content-center mt-4">
   <h1 class="mb-3">Create a user:</h1>
   <%= form_with model: @user, url: user_path do |form| %>
+
+    <% if @user.errors.any? %>
+      <div class="alert alert-danger">
+        <% @user.errors.full_messages.each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+    <% end %>
+
     <div class="mb-3">
       <%= form.label "Name:" %>
       <%= form.text_field :first_name, class: "form-control", placeholder: 'Name' %>
@@ -19,11 +28,11 @@
     </div>
     <div class="mb-3">
       <%= form.label "How many days back:" %>
-      <%= form.number_field :due_date_reminder, class: "form-control", placeholder: 'Days' %>
+      <%= form.number_field :due_date_reminder_interval, class: "form-control", placeholder: 'Days' %>
     </div>
     <div class="mb-3">
       <%= form.label "What time:" %>
-      <%= form.time_field :due_date_reminder, class: "form-control" %>
+      <%= form.time_field :due_date_reminder_time, class: "form-control" %>
     </div>
     <div class="mb-3">
       <%= form.label "Select timezone:" %>
@@ -33,11 +42,4 @@
       <%= form.submit "Create user", class: "btn btn-primary" %>
     </div>
   <% end %>
-
-  <h1 class="mt-4">List of all users:</h1>
-  <ul>
-    <% @users.each do |user| %>
-      <li><%= user.full_name %></li>
-    <% end %>
-  </ul>
 </div>

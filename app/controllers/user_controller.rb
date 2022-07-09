@@ -1,10 +1,28 @@
 class UserController < ApplicationController
   def new
-    @users = User.all
     @user = User.new
   end
 
   def create
-    render plain: "Thanks"
+    @user = User.new(user_params)
+    if @user.save
+      redirect_to root_path, notice: "User was successfully created!"
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(
+      :first_name,
+      :last_name,
+      :email,
+      :due_date_reminder,
+      :due_date_reminder_interval,
+      :due_date_reminder_time,
+      :time_zone
+    )
   end
 end
