@@ -6,7 +6,7 @@ class UserController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_path, notice: "User was successfully created!"
+      redirect_to root_path, notice: "#{@user.first_name} #{@user.last_name} was successfully created!"
     else
       render :new, status: :unprocessable_entity
     end
@@ -16,7 +16,7 @@ class UserController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
 
-    redirect_to root_path, status: :see_other, notice: "User was successfully deleted"
+    redirect_to root_path, status: :see_other, notice: "#{@user.first_name} #{@user.last_name} was successfully deleted"
   end
 
   private

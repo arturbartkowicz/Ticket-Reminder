@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   delete 'user/:id', to: 'user#destroy'
 
   get 'tickets', to: 'tickets#index'
+  post 'tickets', to: 'ticket#create'
+  delete 'tickets/:id', to: 'ticket#destroy'
 end

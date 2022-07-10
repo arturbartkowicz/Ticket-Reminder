@@ -1,6 +1,6 @@
 <div class="d-flex flex-column align-items-center justify-content-center mt-4">
   <h1 class="mb-3">Create a user:</h1>
-  <%= form_with model: @user, url: user_path do |form| %>
+  <%= form_with model: @user, url: user_path, local: true do |form| %>
 
     <% if @user.errors.any? %>
       <div class="alert alert-danger">
