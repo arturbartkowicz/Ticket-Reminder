@@ -21,6 +21,7 @@
           <p>Status: <%= ticket.status_id %></p>
           <p>Ticket progress: <%= ticket.progress %></p>
           <p>Person assigned to a ticket: <%= User.find(ticket.user.id).full_name %></p>
+          <%= link_to "Delete", "tickets/#{ticket.id}", method: :delete, class: "btn btn-primary ms-3" %>
         </li>
       </div>
     <% end %>
