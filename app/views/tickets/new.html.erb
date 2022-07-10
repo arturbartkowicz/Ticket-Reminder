@@ -32,7 +32,7 @@
     </div>
     <div class="mb-3">
       <%= form.label "Assign user to a ticket:" %>
-      <%= form.select(:user_id, [["Artur Bartkowicz", 8], ["Paulina Labaj", 13]], {}, {class: "form-select"}) %>
+      <%= form.select(:user_id, User.all_users_name_id, {}, {class: "form-select"}) %>
     </div>
     <div class="w-full d-flex justify-content-center">
       <%= form.submit "Create ticket", class: "btn btn-primary" %>

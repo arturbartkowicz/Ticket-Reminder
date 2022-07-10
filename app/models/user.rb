@@ -13,4 +13,12 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def user_name_id
+    [full_name, id]
+  end
+
+  def self.all_users_name_id
+    User.all.map {|u| u.user_name_id}
+  end
 end
