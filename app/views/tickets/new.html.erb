@@ -1,0 +1,41 @@
+<div class="d-flex flex-column align-items-center justify-content-center mt-4">
+  <h1 class="mb-3">Create a ticket:</h1>
+  <%= form_with model: @ticket, url: tickets_path, local: true do |form| %>
+
+    <% if @ticket.errors.any? %>
+      <div class="alert alert-danger">
+        <% @ticket.errors.full_messages.each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="mb-3">
+      <%= form.label "Title:" %>
+      <%= form.text_field :title, class: "form-control", placeholder: 'Title' %>
+    </div>
+    <div class="mb-3">
+      <%= form.label "Description:" %>
+      <%= form.text_area :description, class: "form-control", placeholder: 'Description' %>
+    </div>
+    <div class="mb-3">
+      <%= form.label "Date:" %>
+      <%= form.date_field :due_date, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label "Set status:" %>
+      <%= form.select(:status_id, [["Accepted", 0], ["Waiting", 1]], {}, {class: "form-select"}) %>
+    </div>
+    <div class="mb-3">
+      <%= form.label "Set ticket progress:" %>
+      <%= form.select(:progress, [["In progress", 0], ["In till", 1]], {}, {class: "form-select"}) %>
+    </div>
+    <div class="mb-3">
+      <%= form.label "Assign user to a ticket:" %>
+      <%= form.select(:user_id, User.all_users_name_id, {}, {class: "form-select"}) %>
+    </div>
+    <div class="w-full d-flex justify-content-center">
+      <%= form.submit "Create ticket", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
