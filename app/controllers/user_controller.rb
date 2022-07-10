@@ -8,8 +8,15 @@ class UserController < ApplicationController
     if @user.save
       redirect_to root_path, notice: "User was successfully created!"
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+
+    redirect_to root_path, status: :see_other, notice: "User was successfully deleted"
   end
 
   private
